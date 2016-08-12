@@ -16,12 +16,15 @@ import { HeroSearchComponent } from './hero-search.component';
 import { WikiComponent } from './wikipedia/wikipedia.component';
 import { WikiSmartComponent } from './wikipedia/wikipedia-smart.component';
 
+import { DragulaTestComponent } from './dragulatest/dragulatest.component';
+
 import { HeroService } from './hero.svc';
 
 @NgModule({
   imports: [ BrowserModule, FormsModule, routing, HttpModule, JsonpModule],
   declarations: [ AppComponent, HeroDetailComponent, HeroesComponent, DashboardComponent, HeroSearchComponent,
-                  WikiComponent, WikiSmartComponent
+                  WikiComponent, WikiSmartComponent,
+                  DragulaTestComponent
    ],
   providers: [
     HeroService ,
