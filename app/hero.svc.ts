@@ -1,11 +1,23 @@
 import { Injectable } from '@angular/core';
+import { Http, Headers } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+
 import { Hero } from './hero';
 import { HEROSES } from './mock-heroses';
 
 @Injectable()
 export class HeroService {
+  private heroesUrl = 'app/heroes';
+
+  constructor(private http: Http) {
+
+  }
+
   getHeroes() {
-    return Promise.resolve(HEROSES);
+    return this.http.get(this.heroesUrl)
+                    .toPromise()
+                    .then(response => response.json().data as Hero[])
+                    .catch(this.handleError);
   }
   getHeroesSlowly() {
     return new Promise<Hero[]>(resolve => setTimeout(() => resolve(HEROSES), 2000));
@@ -14,4 +26,54 @@ export class HeroService {
     return this.getHeroes()
               .then(h => h.find(hero => hero.id === id));
   }
+
+  delete(hero: Hero) {
+    let headers = new Headers({
+        'Content-Type': 'application/json'
+    });
+
+    let url = `${this.heroesUrl}/${hero.id}`;
+
+    return this.http.delete(url, {headers: headers})
+                    .toPromise()
+                    .catch(this.handleError);
+  }
+
+  save(hero: Hero): Promise<Hero> {
+    if (hero.id) {
+      return this.put(hero);
+    }
+
+    return this.post(hero);
+  }
+
+  private handleError(error: any) {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
+  }
+
+  private post(hero: Hero): Promise<Hero> {
+    let headers = new Headers({
+        'Content-Type': 'application/json'
+    });
+
+    return this.http.post(this.heroesUrl, JSON.stringify(hero), {headers: headers})
+                    .toPromise()
+                    .then(res => res.json().data)
+                    .catch(this.handleError);
+  }
+
+  private put(hero: Hero) {
+    let headers = new Headers({
+        'Content-Type': 'application/json'
+    });
+
+    let url = `${this.heroesUrl}/${hero.id}`;
+
+    return this.http.put(url, JSON.stringify(hero), {headers: headers})
+                    .toPromise()
+                    .then(() => hero)
+                    .catch(this.handleError);
+  }
+
 }

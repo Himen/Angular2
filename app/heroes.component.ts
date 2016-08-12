@@ -12,6 +12,8 @@ import { Hero } from './hero';
 export class HeroesComponent implements OnInit {
     public heroes: Hero[];
     selectedHero: Hero;
+    addingHero: boolean = false;
+    error: any;
 
     ngOnInit() {
       this.getHeroses();
@@ -28,11 +30,37 @@ export class HeroesComponent implements OnInit {
       // this.heroService.getHeroes().then(h => this.heroes = h);
       // this.heroService.getHeroesSlowly().then(h => this.heroes = h.slice(1, 4));
       // delay(6000);
-      this.heroService.getHeroesSlowly().then(h => this.heroes = h);
+      this.heroService.getHeroes()
+                      .then(h => this.heroes = h)
+                      .catch(error => this.error = error);
     }
 
-    goToDetails() : void{
+    goToDetails(): void {
       this.router.navigate(['/detail', this.selectedHero.id]);
+    }
+
+    addHero(): void {
+      this.addingHero = true;
+      this.selectedHero = null;
+    }
+
+    close(savedHero: Hero): void {
+      this.addingHero = false;
+      if (savedHero) {
+        this.getHeroses();
+      }
+    }
+
+    deleteHero(hero: Hero, event: any): void{
+      event.stopPropagation();
+      this.heroService.delete(hero)
+                      .then(res => {
+                        this.heroes = this.heroes.filter(h => h !== hero);
+                        if (this.selectedHero === hero) {
+                          this.selectedHero = null;
+                        }
+                      })
+                      .catch(error => this.error = error);
     }
  }
 
