@@ -18,19 +18,26 @@ import { WikiSmartComponent } from './wikipedia/wikipedia-smart.component';
 
 import { DragulaTestComponent } from './dragulatest/dragulatest.component';
 
+import { DnDComponent } from './ng2DnD/ng2DnD.component';
+
+import { DND_PROVIDERS } from 'ng2-dnd/ng2-dnd';
+
 import { HeroService } from './hero.svc';
 
 @NgModule({
   imports: [ BrowserModule, FormsModule, routing, HttpModule, JsonpModule],
   declarations: [ AppComponent, HeroDetailComponent, HeroesComponent, DashboardComponent, HeroSearchComponent,
                   WikiComponent, WikiSmartComponent,
-                  DragulaTestComponent
+                  DragulaTestComponent,
+                  DnDComponent
    ],
   providers: [
     HeroService ,
     { provide: XHRBackend, useClass: InMemoryBackendService},
     { provide: SEED_DATA, useClass: InMemoryService}
     ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent/*, [
+    DND_PROVIDERS // It is required to have 1 unique instance of your service
+] */]
 })
 export class AppModule { }
