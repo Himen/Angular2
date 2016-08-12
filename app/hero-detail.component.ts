@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { HeroService } from './hero.svc';
 
+import { HeroService } from './hero.svc';
 import { Hero } from './hero';
 
 @Component({
@@ -48,6 +48,6 @@ export class HeroDetailComponent implements OnInit {
                 this.hero = hero;
                 this.goBack(hero);
             })
-            .catch(error=> this.error = error);
+            .catch(error => this.error = error);
     }
 }
