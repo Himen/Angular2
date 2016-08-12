@@ -9,6 +9,8 @@ import { WikiSmartComponent } from './wikipedia/wikipedia-smart.component';
 
 import { DragulaTestComponent } from './dragulatest/dragulatest.component';
 
+import { DnDComponent } from './ng2DnD/ng2DnD.component';
+
 const appRoutes: Routes = [
     { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     { path: 'heroes', component: HeroesComponent },
@@ -16,7 +18,8 @@ const appRoutes: Routes = [
     { path: 'detail/:id', component: HeroDetailComponent },
     { path: 'wiki', component: WikiComponent },
     { path: 'wikismart', component: WikiSmartComponent },
-    { path: 'dragula', component: DragulaTestComponent }
+    { path: 'dragula', component: DragulaTestComponent },
+    { path: 'dnd', component: DnDComponent }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
