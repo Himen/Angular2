@@ -17,10 +17,11 @@ import { WikiComponent } from './wikipedia/wikipedia.component';
 import { WikiSmartComponent } from './wikipedia/wikipedia-smart.component';
 
 import { DragulaTestComponent } from './dragulatest/dragulatest.component';
+import { SecondBagComponent } from './dragulatest/second-bag.component';
 
 import { DnDComponent } from './ng2DnD/ng2DnD.component';
 
-import { DND_PROVIDERS } from 'ng2-dnd/ng2-dnd';
+import { BeThereGridComponent } from './bethere-grid/bethere-grid.component';
 
 import { HeroService } from './hero.svc';
 
@@ -28,16 +29,15 @@ import { HeroService } from './hero.svc';
   imports: [ BrowserModule, FormsModule, routing, HttpModule, JsonpModule],
   declarations: [ AppComponent, HeroDetailComponent, HeroesComponent, DashboardComponent, HeroSearchComponent,
                   WikiComponent, WikiSmartComponent,
-                  DragulaTestComponent,
-                  DnDComponent
+                  DragulaTestComponent, SecondBagComponent,
+                  DnDComponent,
+                  BeThereGridComponent
    ],
   providers: [
     HeroService ,
     { provide: XHRBackend, useClass: InMemoryBackendService},
     { provide: SEED_DATA, useClass: InMemoryService}
     ],
-  bootstrap: [ AppComponent/*, [
-    DND_PROVIDERS // It is required to have 1 unique instance of your service
-] */]
+  bootstrap: [ AppComponent]
 })
 export class AppModule { }
