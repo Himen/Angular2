@@ -25,13 +25,16 @@ import { BeThereGridComponent } from './bethere-grid/bethere-grid.component';
 
 import { HeroService } from './hero.svc';
 
+import { Angular2GridComponent } from './angular2-grid/angular2grid.component';
+
 @NgModule({
   imports: [ BrowserModule, FormsModule, routing, HttpModule, JsonpModule],
   declarations: [ AppComponent, HeroDetailComponent, HeroesComponent, DashboardComponent, HeroSearchComponent,
                   WikiComponent, WikiSmartComponent,
                   DragulaTestComponent, SecondBagComponent,
                   DnDComponent,
-                  BeThereGridComponent
+                  BeThereGridComponent,
+                  Angular2GridComponent
    ],
   providers: [
     HeroService ,

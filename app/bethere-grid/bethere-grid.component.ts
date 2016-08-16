@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Dragula, DragulaService } from 'ng2-dragula/ng2-dragula';
 
+import * as _ from 'underscore';
 
 @Component({
     moduleId: module.id,
@@ -27,6 +28,7 @@ export class BeThereGridComponent implements OnInit {
      private onDropModel(args: any) {
         let [el, target, source] = args;
         // do something else
+        let underScoreExample = _.uniqueId();
       }
 
       private onRemoveModel(args: any) {
