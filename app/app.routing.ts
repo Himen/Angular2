@@ -14,6 +14,8 @@ import { DnDComponent } from './ng2DnD/ng2DnD.component';
 
 import { BeThereGridComponent } from './bethere-grid/bethere-grid.component';
 
+import { Angular2GridComponent } from './angular2-grid/angular2grid.component';
+
 const appRoutes: Routes = [
     { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     { path: 'heroes', component: HeroesComponent },
@@ -24,7 +26,8 @@ const appRoutes: Routes = [
     { path: 'dragula', component: DragulaTestComponent },
     { path: 'dragulas/secondbag', component: SecondBagComponent },
     { path: 'dnd', component: DnDComponent },
-    { path: 'betheregrid', component: BeThereGridComponent }
+    { path: 'betheregrid', component: BeThereGridComponent },
+    { path: 'angular2grid', component: Angular2GridComponent },
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

@@ -16,7 +16,10 @@
     'ng2-dragula': 'node_modules/ng2-dragula',
 
     'ng2-dnd': 'node_modules/ng2-dnd',
-    
+
+    'underscore': './node_modules/underscore/underscore.js',
+
+    'angular2-grid': 'node_modules/angular2-grid/dist',
   };
 
   // packages tells the System loader how to load when no filename and/or no extension
@@ -28,7 +31,9 @@
     'dragula': { defaultExtension: 'js' },
     'ng2-dragula': {defaultExtension: 'js' },
 
-    "ng2-dnd": {"defaultExtension": "js"}
+    "ng2-dnd": {"defaultExtension": "js"},
+    'underscore': {defaultExtension: 'js' },
+    'angular2-grid': { main: 'main.js',  defaultExtension: 'js' }
   };
 
   var ngPackageNames = [
